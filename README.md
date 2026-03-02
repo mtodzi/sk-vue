@@ -1,44 +1,55 @@
-# sk-vue
+# Service Keeper (sk-vue)
 
-This template should help get you started developing with Vue 3 in Vite.
+Service Keeper — это веб-приложение для управления сервисным центром. Оно позволяет вести учет заказов на ремонт, базу клиентов и склад запчастей.
 
-## Recommended IDE Setup
+Особенность проекта заключается в том, что он работает **полностью в браузере** (Client-side), используя SQLite через WebAssembly (`sql.js`). База данных сохраняется локально в браузере (IndexedDB) и может быть сохранена в файл или загружена из него.
 
-[VS Code](https://code.visualstudio.com/) + [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+## Основные возможности
 
-## Recommended Browser Setup
+- **Учет заказов**: Создание, редактирование, поиск и архивация заказов на ремонт.
+- **База клиентов**: Ведение списка клиентов с контактами.
+- **Склад**: Учет запчастей и устройств.
+- **Печать**: Генерация квитанций на прием техники.
+- **Автономность**: Работает без бэкенда (Serverless), данные хранятся у пользователя.
+- **Безопасность**: Локальная авторизация, хеширование паролей.
+- **Экспорт/Импорт**: Возможность сохранить полную копию базы данных в файл `.sqlite`.
 
-- Chromium-based browsers (Chrome, Edge, Brave, etc.):
-  - [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd)
-  - [Turn on Custom Object Formatter in Chrome DevTools](http://bit.ly/object-formatters)
-- Firefox:
-  - [Vue.js devtools](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
-  - [Turn on Custom Object Formatter in Firefox DevTools](https://fxdx.dev/firefox-devtools-custom-object-formatters/)
+## Технологический стек
 
-## Customize configuration
+- Vue 3 (Composition API)
+- Vite
+- SQL.js (SQLite compiled to WebAssembly)
+- Bootstrap 5
+- Vue Router
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+## Установка и запуск для разработки
 
-## Project Setup
+1.  Клонируйте репозиторий:
 
-```sh
-npm install
-```
+    ```sh
+    git clone https://github.com/mtodzi/sk-vue.git
+    cd sk-vue
+    ```
 
-### Compile and Hot-Reload for Development
+2.  Установите зависимости:
 
-```sh
-npm run dev
-```
+    ```sh
+    npm install
+    ```
 
-### Compile and Minify for Production
+3.  Запустите режим разработки:
+    ```sh
+    npm run dev
+    ```
+
+## Сборка и развертывание в Production
+
+Приложение является статическим (SPA), поэтому его можно развернуть на любом веб-сервере или хостинге статических сайтов (GitHub Pages, Netlify, Vercel, Nginx, Apache).
+
+### 1. Сборка проекта
+
+Выполните команду для сборки оптимизированной версии приложения:
 
 ```sh
 npm run build
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
 ```
