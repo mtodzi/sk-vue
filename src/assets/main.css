@@ -1,0 +1,188 @@
+body {
+  background-color: #f4f6f9;
+  font-family:
+    system-ui,
+    -apple-system,
+    'Segoe UI',
+    Roboto,
+    'Helvetica Neue',
+    Arial,
+    sans-serif;
+}
+/* Стили боковой панели */
+.sidebar {
+  width: 50px;
+  background-color: #343a40;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 10px;
+}
+.sidebar-btn {
+  width: 38px;
+  height: 38px;
+  background-color: #fff;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 8px;
+  color: #212529;
+  text-decoration: none;
+  font-size: 18px;
+}
+.sidebar-btn i {
+}
+.sidebar-btn:hover {
+  background-color: #e9ecef;
+  color: #000;
+}
+.sidebar-bottom {
+  margin-top: auto;
+  margin-bottom: 10px;
+}
+
+/* Основной контент */
+.main-wrapper {
+  margin-left: 50px;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Стили карточки заказа */
+.order-card {
+  border: 1px solid #dee2e6;
+  background-color: #fff;
+}
+.order-header {
+  background-color: #dc3545; /* Красный цвет Bootstrap */
+  color: white;
+  padding: 6px 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.header-actions .btn {
+  background-color: #fff;
+  border: none;
+  padding: 2px 8px;
+  margin-left: 5px;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+/* Цвета иконок в кнопках заголовка */
+.icon-lock {
+  color: #0dcaf0;
+} /* Голубой */
+.icon-print {
+  color: #000;
+} /* Черный */
+.icon-edit {
+  color: #198754;
+} /* Зеленый */
+
+.order-body {
+  padding: 10px 15px;
+  font-size: 0.95rem;
+  text-align: center;
+}
+.client-title {
+  font-weight: 700;
+  font-size: 1.05rem;
+  margin-bottom: 4px;
+}
+
+/* Адаптивность */
+.search-form-container {
+  width: 100%;
+}
+@media (min-width: 992px) {
+  .search-form-container {
+    width: 300px;
+  }
+
+  body.sidebar-desktop-hidden .sidebar {
+    display: none;
+  }
+
+  body.sidebar-desktop-hidden .main-wrapper {
+    margin-left: 0;
+  }
+
+  /* На десктопе меню открыто по умолчанию -> скрываем кнопку */
+  #sidebar-toggle {
+    display: none;
+  }
+  body.sidebar-desktop-hidden #sidebar-toggle {
+    display: inline-block;
+  }
+}
+
+/* --- Адаптивность для мобильных --- */
+@media (max-width: 991.98px) {
+  .sidebar {
+    transform: translateX(-100%);
+    z-index: 1045; /* Выше оверлея */
+  }
+  .main-wrapper {
+    margin-left: 0;
+  }
+  body.sidebar-mobile-show .sidebar {
+    transform: translateX(0);
+  }
+  .sidebar-overlay {
+    display: none;
+  }
+  body.sidebar-mobile-show .sidebar-overlay {
+    display: block;
+  }
+
+  /* На мобильном меню открывается классом -> скрываем кнопку при открытии */
+  body.sidebar-mobile-show #sidebar-toggle {
+    display: none;
+  }
+}
+
+@media (max-width: 575.98px) {
+  /* Ниже SM (мобильные) */
+  .order-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .order-header > span {
+    margin-bottom: 0.5rem;
+  }
+  .order-header .header-actions {
+    /* Сдвигаем блок с кнопками вправо в столбике */
+    align-self: flex-end;
+  }
+}
+
+.sidebar-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1040;
+  display: none;
+}
+
+.orders-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 15px;
+}
+@media (min-width: 768px) {
+  .orders-container {
+    grid-template-columns: 1fr 1fr;
+  }
+}
