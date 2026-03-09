@@ -1,0 +1,9 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    container_name: service-keeper-vue
+    ports:
+      - '80:80' # Проброс порта 8081 хоста на порт 80 контейнера
+    restart: unless-stopped
